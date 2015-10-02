@@ -1,6 +1,7 @@
 package com.domain;
 
 import java.sql.Date;
+import java.util.Objects;
 
 /**
  * Created by sasha on 02.10.15.
@@ -22,7 +23,12 @@ public class Student {
         this.birthday = birthday;
         this.groupe = groupe;
     }
-
+    public Student( String name, String surname, Date birthday, String groupe) {
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.groupe = groupe;
+    }
     public int getId() {
         return id;
     }
@@ -67,6 +73,23 @@ public class Student {
                 ", surname='" + surname + '\'' +
                 ", birthday=" + birthday +
                 ", groupe='" + groupe + '\'' +
-                '}';
+                "}\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return Objects.equals(id, student.id) &&
+                Objects.equals(name, student.name) &&
+                Objects.equals(surname, student.surname) &&
+                Objects.equals(birthday, student.birthday) &&
+                Objects.equals(groupe, student.groupe);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, birthday, groupe);
     }
 }

@@ -3,6 +3,7 @@ package com.application;
 import com.domain.Student;
 import com.domain.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public ApplicationServiceImpl(StudentRepository repository) {
         this.repository = repository;
     }
-
+    @Transactional
     public int concatStudentName3() {
         int count=0;
         List<Student> list= repository.getAllStudents();
@@ -33,7 +34,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         }
         return count;
     }
-
+    @Transactional
     public List<Student> getAllStudentsWithRepeatedNames() {
         List<Student> answer = new ArrayList<Student>();
         List<Student> list = repository.getAllStudents();

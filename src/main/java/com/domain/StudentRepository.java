@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface StudentRepository {
     void createStudent(Student student);
-    Student getStudent();
+    Student getStudent(int id);
     void removeStudent(Student student);
     void editStudent(Student student);
     List<Student> getAllStudents();
