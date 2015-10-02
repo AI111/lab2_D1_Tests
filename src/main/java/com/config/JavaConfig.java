@@ -28,6 +28,7 @@ public class JavaConfig {
     @Bean
     public DataSource dataSource()
     {
+
         System.out.println(env.getProperty("jdbc.url"));
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
