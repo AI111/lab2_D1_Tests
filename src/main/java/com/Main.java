@@ -23,15 +23,6 @@ public class Main {
         service.concatStudentName3();
         System.out.println(repository.getAllStudents());
         System.out.println("repeated names");
-
         System.out.println(service.getAllStudentsWithRepeatedNames());
-//        Student student = new Student();
-//        student.setName("Sasha");
-//        student.setBirthday(new Date(100000));
-//        student.setSurname("Andreev");
-//        student.setGroupe("AI111");
-//      //  repository.createStudent(student);
-//        System.out.println("GET ALL");
-//        System.out.println(repository.getAllStudents());
     }
 }

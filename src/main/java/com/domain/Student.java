@@ -80,16 +80,24 @@ public class Student {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student)) return false;
+
         Student student = (Student) o;
-        return Objects.equals(id, student.id) &&
-                Objects.equals(name, student.name) &&
-                Objects.equals(surname, student.surname) &&
-                Objects.equals(birthday, student.birthday) &&
-                Objects.equals(groupe, student.groupe);
+
+        if (id != student.id) return false;
+        if (name != null ? !name.equals(student.name) : student.name != null) return false;
+        if (surname != null ? !surname.equals(student.surname) : student.surname != null) return false;
+        if (birthday != null ? !birthday.equals(student.birthday) : student.birthday != null) return false;
+        return !(groupe != null ? !groupe.equals(student.groupe) : student.groupe != null);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, birthday, groupe);
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (groupe != null ? groupe.hashCode() : 0);
+        return result;
     }
 }

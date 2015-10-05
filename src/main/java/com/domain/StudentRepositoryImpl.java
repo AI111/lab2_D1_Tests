@@ -12,8 +12,7 @@ import java.util.List;
 public class StudentRepositoryImpl implements StudentRepository{
     @Autowired
     JdbcTemplate jdbcTemplate;
-//    @Autowired
-//    DataSource dataSource;
+
     @Override
     public void createStudent(Student student) {
         String sql = "INSERT INTO student (first_name,last_name, birthday, groupe) VALUES (?, ?, ?, ?)";
@@ -35,8 +34,8 @@ public class StudentRepositoryImpl implements StudentRepository{
 
     @Override
     public void editStudent(Student student) {
-        String sql = "UPDATE student SET id = ?,first_name = ?,last_name = ?, birthday = ?, groupe = ?";
-        jdbcTemplate.update(sql,student.getId(),student.getName(),student.getSurname(),student.getBirthday(),student.getGroupe());
+        String sql = "UPDATE student SET first_name = ?,last_name = ?, birthday = ?, groupe = ? WHERE id = ?";
+        jdbcTemplate.update(sql,student.getName(),student.getSurname(),student.getBirthday(),student.getGroupe(),student.getId());
     }
 
     @Override

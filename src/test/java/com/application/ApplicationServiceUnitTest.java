@@ -19,7 +19,7 @@ public class ApplicationServiceUnitTest {
 
     @Test
     public void testConcatUserName3() throws Exception {
-        Date date = new Date(0);
+        Date date = Date.valueOf("1970-01-01");
         List<Student> list = new ArrayList<>();
         list.add(new Student("NAME", "LAST NAME",date ,"AI11"));
         list.add(new Student("ENAME", "LAST NAME", date, "AI111"));
@@ -27,15 +27,11 @@ public class ApplicationServiceUnitTest {
         list.add(new Student("ENAME2_3", "LAST NAME", date, "AI111"));
         list.add(new Student("E", "LAST NAME", date, "AI111"));
         list.add(new Student("NAME", "LAST NAME", date, "AI111"));
-
         StudentRepository mockRepository = mock(StudentRepository.class);
         ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
-
         when(mockRepository.getAllStudents()).thenReturn(list);
-
         applicationService.concatStudentName3();
         verify(mockRepository, times(1)).getAllStudents();
-
         verify(mockRepository).editStudent(new Student("ENAME_3", "LAST NAME", date, "AI111"));
         verify(mockRepository).editStudent(new Student("ENAME2_3_3", "LAST NAME", date, "AI111"));
         verify(mockRepository).editStudent(new Student("E_3", "LAST NAME", date, "AI111"));
