@@ -28,7 +28,8 @@ public class ApplicationServiceUnitTest {
         list.add(new Student("E", "LAST NAME", date, "AI111"));
         list.add(new Student("NAME", "LAST NAME", date, "AI111"));
         StudentRepository mockRepository = mock(StudentRepository.class);
-        ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
+        ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
+        applicationService.repository = mockRepository;
         when(mockRepository.getAllStudents()).thenReturn(list);
         applicationService.concatStudentName3();
         verify(mockRepository, times(1)).getAllStudents();
@@ -43,7 +44,8 @@ public class ApplicationServiceUnitTest {
         List<Student> list = new ArrayList<>();
 
         StudentRepository mockRepository = mock(StudentRepository.class);
-        ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
+        ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
+        applicationService.repository = mockRepository;
 
         when(mockRepository.getAllStudents()).thenReturn(list);
 
@@ -64,8 +66,8 @@ public class ApplicationServiceUnitTest {
         list.add(new Student("e", "LAST NAME", date, "AI111"));
 
         StudentRepository mockRepository = mock(StudentRepository.class);
-        ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
-
+        ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
+        applicationService.repository = mockRepository;
         when(mockRepository.getAllStudents()).thenReturn(list);
 
         int i=applicationService.concatStudentName3();
@@ -94,7 +96,8 @@ public class ApplicationServiceUnitTest {
         StudentRepository mockRepository = mock(StudentRepository.class);
         when(mockRepository.getAllStudents()).thenReturn(list);
 
-        ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
+        ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
+        applicationService.repository = mockRepository;
         List ans = applicationService.getAllStudentsWithRepeatedNames();
         assertEquals(ans, mustReturn);
         verify(mockRepository,times(1)).getAllStudents();
@@ -105,7 +108,8 @@ public class ApplicationServiceUnitTest {
     public void testGetAllStudentsWithRepeatedNamesEmptyList() throws Exception {
         StudentRepository mockRepository = mock(StudentRepository.class);
         when(mockRepository.getAllStudents()).thenReturn(new ArrayList<Student>());
-        ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
+        ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
+        applicationService.repository = mockRepository;
         List ans = applicationService.getAllStudentsWithRepeatedNames();
         assertEquals(ans,new ArrayList<Student>() );
         verify(mockRepository,times(1)).getAllStudents();
@@ -125,7 +129,8 @@ public class ApplicationServiceUnitTest {
         StudentRepository mockRepository = mock(StudentRepository.class);
         when(mockRepository.getAllStudents()).thenReturn(list);
 
-        ApplicationService applicationService = new ApplicationServiceImpl(mockRepository);
+        ApplicationServiceImpl applicationService = new ApplicationServiceImpl();
+        applicationService.repository = mockRepository;
         List ans = applicationService.getAllStudentsWithRepeatedNames();
         assertEquals(ans, new ArrayList<Student>());
         verify(mockRepository,times(1)).getAllStudents();

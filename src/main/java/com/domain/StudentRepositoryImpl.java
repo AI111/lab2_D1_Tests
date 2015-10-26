@@ -2,6 +2,7 @@ package com.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.List;
 /**
  * Created by sasha on 02.10.15.
  */
+@Repository
 public class StudentRepositoryImpl implements StudentRepository{
     @Autowired
     JdbcTemplate jdbcTemplate;
+
 
     @Override
     public void createStudent(Student student) {

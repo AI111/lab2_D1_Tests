@@ -1,5 +1,4 @@
-drop table if exists student;
-create table student(
+create table if not exists  student(
 id INT not null ,
 first_name varchar(30) not null,
 last_name varchar(30) not null,

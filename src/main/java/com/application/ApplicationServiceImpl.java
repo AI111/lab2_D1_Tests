@@ -3,24 +3,21 @@ package com.application;
 import com.domain.Student;
 import com.domain.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.BiConsumer;
 
 /**
  * Created by sasha on 02.10.15.
  */
+@Service
 public class ApplicationServiceImpl implements ApplicationService {
 
-
+    @Autowired
     StudentRepository repository;
 
-    @Autowired
-    public ApplicationServiceImpl(StudentRepository repository) {
-        this.repository = repository;
-    }
     @Transactional
     public int concatStudentName3() {
         int count=0;
@@ -36,24 +33,23 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     @Transactional
     public List<Student> getAllStudentsWithRepeatedNames() {
-        List<Student> answer = new ArrayList<Student>();
+        List<Student> answer = new LinkedList<>();
         List<Student> list = repository.getAllStudents();
-
-        boolean[] aded = new boolean[list.size()];
-        boolean repeat=false;
-        Arrays.fill(aded, false);
-        for (int i = 0; i < list.size() ; i++) {
-            for (int j = 0; j < list.size(); j++) {
-                if(i!=j&&!aded[i]&&list.get(i).getName().equals(list.get(j).getName())){
-                    if(!repeat)answer.add(list.get(i));
-                    repeat=true;
-                    answer.add(list.get(j));
-                    aded[j]=true;
-
-                }
+        Map<String,LinkedList<Student>> studentMap = new LinkedHashMap<>();
+        for (Student student: list){
+            if(studentMap.containsKey(student.getName())){
+                studentMap.get(student.getName()).add(student);
+            }else{
+                studentMap.put(student.getName(),new LinkedList<>(Arrays.asList(new Student[]{student})));
             }
-            repeat =false;
         }
+        studentMap.forEach(new BiConsumer<String, LinkedList<Student>>() {
+            @Override
+            public void accept(String s, LinkedList<Student> students) {
+                if(students.size()>1)answer.addAll(students);
+            }
+        });
+
         return answer;
     }
 }
