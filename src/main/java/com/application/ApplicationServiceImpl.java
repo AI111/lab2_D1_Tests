@@ -49,7 +49,6 @@ public class ApplicationServiceImpl implements ApplicationService {
                 if(students.size()>1)answer.addAll(students);
             }
         });
-
         return answer;
     }
 }
