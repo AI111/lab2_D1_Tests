@@ -1,6 +1,6 @@
 package com.application;
 
-import com.domain.Student;
+import com.domain.Item;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * Created by sasha on 02.10.15.
  */
 public interface ApplicationService {
-    int concatStudentName3();
-    List<Student> getAllStudentsWithRepeatedNames();
+    int concatItemName3();
+    List<Item> getAllItemsWithRepeatedNames();
 
 }
