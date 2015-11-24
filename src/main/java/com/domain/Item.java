@@ -20,6 +20,13 @@ public class Item {
     public Item() {
     }
 
+    public Item(int id, String name, String description, double price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
     public Item(String name, String description, double price) {
         this.name = name;
         this.description = description;
@@ -82,5 +89,15 @@ public class Item {
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                "\n}";
     }
 }

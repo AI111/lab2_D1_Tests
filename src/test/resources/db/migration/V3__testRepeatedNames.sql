@@ -1,7 +1,7 @@
-DELETE  FROM student;
-INSERT INTO student (id,first_name,last_name,birthday,groupe) VALUES (1,'Eduard','Andreev','1970-01-01','AI111');
-INSERT INTO student (id,first_name,last_name,birthday,groupe) VALUES (2,'Sasha','Andreev','1970-01-01','AI111');
-INSERT INTO student (id,first_name,last_name,birthday,groupe) VALUES (3,'Eduard','Andreev','1970-01-01','AI111');
-INSERT INTO student (id,first_name,last_name,birthday,groupe) VALUES (4,'Sasha','Andreev','1970-01-01','AI111');
-INSERT INTO student (id,first_name,last_name,birthday,groupe) VALUES (5,'Sasha','Andreev','1970-01-01','AI111');
-INSERT INTO student (id,first_name,last_name,birthday,groupe) VALUES (6,'Dima','Andreev','1970-01-01','AI111');
+DELETE  FROM ITEM;
+INSERT INTO ITEM (ID,NAME,DESCRIPTION,PRICE) VALUES (1,'Ename','description',0.99);
+INSERT INTO ITEM (ID,NAME,DESCRIPTION,PRICE) VALUES (2,'name','description',0.99);
+INSERT INTO ITEM (ID,NAME,DESCRIPTION,PRICE) VALUES (3,'Ename','description',0.99);
+INSERT INTO ITEM (ID,NAME,DESCRIPTION,PRICE) VALUES (4,'name','description',0.99);
+INSERT INTO ITEM (ID,NAME,DESCRIPTION,PRICE) VALUES (5,'name','description',0.99);
+

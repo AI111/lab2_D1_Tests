@@ -9,10 +9,11 @@ import java.util.List;
  */
 
 public interface ItemRepository {
-    void createItem(Item student);
+    void createItem(Item item);
+    void createItems(List<Item> item);
     Item getItem(int id);
-    void removeItem(Item student);
-    void editItem(Item student);
+    void removeItem(Item item);
+    void editItem(Item item);
     List<Item> getAllItems();
 
 }

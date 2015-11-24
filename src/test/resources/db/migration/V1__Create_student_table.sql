@@ -1,9 +1,8 @@
-create table if not exists  student(
-id INT not null ,
-first_name varchar(30) not null,
-last_name varchar(30) not null,
-birthday date not null,
-groupe varchar(15) not null,
-primary key (id));
-
+create table if not exists  ITEM (
+  ID INT NOT NULL,
+  DESCRIPTION varchar(30) DEFAULT NULL,
+  NAME varchar(30) DEFAULT NULL,
+  PRICE double DEFAULT NULL,
+  PRIMARY KEY (ID)
+  )
 

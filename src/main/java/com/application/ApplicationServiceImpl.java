@@ -18,6 +18,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     ItemRepository repository;
 
+
     @Transactional
     public int concatItemName3() {
         int count=0;

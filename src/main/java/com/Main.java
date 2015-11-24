@@ -23,7 +23,8 @@ public class Main {
         ItemRepository repository = context.getBean(ItemRepository.class);
 
         List<Item> list = new ArrayList<>(Arrays.asList(new Item[]{ new Item("name","description",199.99)}));
-        list.stream().forEach(item -> repository.createItem(item));
+        repository.createItems(list);
+        System.out.println(repository.getAllItems());
 //        System.out.println("concat _3");
 //        service.concatStudentName3();
 //        System.out.println(repository.getAllStudents());

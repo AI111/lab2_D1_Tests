@@ -3,6 +3,7 @@ package com.domain;
 import org.eclipse.persistence.sessions.factories.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,38 +14,17 @@ import java.util.List;
  */
 @Repository
 public class ItemRepositoryImpl implements ItemRepository {
-//    @Autowired
-//    SessionFactory sessionFactory;
-//    @Override
-//    public void createItem(Item student) {
-//
-//    }
-//
-//    @Override
-//    public Item getItem(int id) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void removeItem(Item student) {
-//
-//    }
-//
-//    @Override
-//    public void editItem(Item student) {
-//
-//    }
-//
-//    @Override
-//    public List<Item> getAllItems() {
-//        return null;
-//    }
 
     @PersistenceContext
     private EntityManager entityManager;
     @Override
     public void createItem(Item item) {
         entityManager.persist(item);
+    }
+    @Transactional
+    @Override
+    public void createItems(List<Item> items) {
+        items.stream().forEach(item -> entityManager.persist(item));
     }
 
     @Override
@@ -64,6 +44,6 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public List<Item> getAllItems() {
-        return entityManager.createQuery("from"+Item.class.getName()).getResultList();
+        return entityManager.createQuery("SELECT a FROM  Item a").getResultList();
     }
 }
