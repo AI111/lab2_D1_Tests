@@ -36,6 +36,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<Item> getAllItemsWithRepeatedNames() {
         List<Item> answer = new LinkedList<>();
         List<Item> list = repository.getAllItems();
+
         Map<String,LinkedList<Item>> studentMap = new LinkedHashMap<>();
         for (Item student: list){
             if(studentMap.containsKey(student.getName())){
