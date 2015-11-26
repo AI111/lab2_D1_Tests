@@ -20,33 +20,34 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Transactional
     public int concatStudentName3() {
-        int count=0;
-        List<Student> list= repository.getAllStudents();
-        for(Student student:list){
-            if(student.getName().startsWith("E")){
-                student.setName(student.getName()+"_3");
+        int count = 0;
+        List<Student> list = repository.getAllStudents();
+        for (Student student : list) {
+            if (student.getName().startsWith("E")) {
+                student.setName(student.getName() + "_3");
                 repository.editStudent(student);
                 count++;
             }
         }
         return count;
     }
+
     @Transactional
     public List<Student> getAllStudentsWithRepeatedNames() {
         List<Student> answer = new LinkedList<>();
         List<Student> list = repository.getAllStudents();
-        Map<String,LinkedList<Student>> studentMap = new LinkedHashMap<>();
-        for (Student student: list){
-            if(studentMap.containsKey(student.getName())){
+        Map<String, LinkedList<Student>> studentMap = new LinkedHashMap<>();
+        for (Student student : list) {
+            if (studentMap.containsKey(student.getName())) {
                 studentMap.get(student.getName()).add(student);
-            }else{
-                studentMap.put(student.getName(),new LinkedList<>(Arrays.asList(new Student[]{student})));
+            } else {
+                studentMap.put(student.getName(), new LinkedList<>(Arrays.asList(new Student[]{student})));
             }
         }
         studentMap.forEach(new BiConsumer<String, LinkedList<Student>>() {
             @Override
             public void accept(String s, LinkedList<Student> students) {
-                if(students.size()>1)answer.addAll(students);
+                if (students.size() > 1) answer.addAll(students);
             }
         });
         return answer;

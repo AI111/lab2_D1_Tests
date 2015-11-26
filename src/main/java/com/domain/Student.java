@@ -23,12 +23,14 @@ public class Student {
         this.birthday = birthday;
         this.groupe = groupe;
     }
-    public Student( String name, String surname, Date birthday, String groupe) {
+
+    public Student(String name, String surname, Date birthday, String groupe) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
         this.groupe = groupe;
     }
+
     public int getId() {
         return id;
     }

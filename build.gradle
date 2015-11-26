@@ -3,6 +3,9 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
 sourceCompatibility = 1.8
 
 repositories {
@@ -45,5 +48,28 @@ test {
     reports {
         junitXml.enabled = false
         html.enabled = true
+    }
+}
+findbugsMain {
+    ignoreFailures = true
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled = true
+    }
+}
+checkstyleMain {
+    ignoreFailures = true
+    doLast {
+        ant.xslt(in: "$buildDir/reports/checkstyle/main.xml",
+                style:"config/checkstyle/checkstyle.xsl",
+                out:"$buildDir/reports/checkstyle/checkstyle.html"
+        )
     }
 }
