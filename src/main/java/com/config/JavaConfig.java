@@ -19,14 +19,14 @@ import javax.sql.DataSource;
  * Created by sasha on 02.10.15.
  */
 @Configuration
-@PropertySource({ "application.properties" })
+@PropertySource({"application.properties"})
 @ComponentScan("com")
 public class JavaConfig {
     @Autowired
     private Environment env;
+
     @Bean
-    public DataSource dataSource()
-    {
+    public DataSource dataSource() {
         System.out.println(env.getProperty("jdbc.url"));
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
@@ -35,12 +35,14 @@ public class JavaConfig {
         dataSource.setPassword(env.getProperty("jdbc.password"));
         return dataSource;
     }
+
     @Bean
-    public PlatformTransactionManager transactionManager(){
+    public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
     }
+
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
 

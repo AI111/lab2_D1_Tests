@@ -51,7 +51,9 @@ test {
     }
 }
 findbugsMain {
-    ignoreFailures = true
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "high"
     reports {
         xml.enabled = false
         html.enabled = true
