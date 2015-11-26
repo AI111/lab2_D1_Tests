@@ -4,8 +4,6 @@ import com.application.ApplicationService;
 import com.config.JavaConfig;
 import com.domain.Item;
 import com.domain.ItemRepository;
-import com.domain.Student;
-import com.domain.StudentRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

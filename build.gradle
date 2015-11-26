@@ -1,18 +1,11 @@
 group 'software-quality-course'
 version '1.0-SNAPSHOT'
-buildscript {
-    repositories { jcenter() }
 
-    dependencies {
-        classpath 'com.netflix.nebula:gradle-metrics-plugin:3.2.0'
-    }
-}
-
-apply plugin: 'nebula.metrics'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
 apply plugin: "jacoco"
+apply plugin: 'findbugs'
 sourceCompatibility = 1.8
 
 
@@ -39,14 +32,7 @@ dependencies {
 
 }
 
-jacocoTestReport {
-    reports {
-        html.enabled = true
-        csv.enabled = false
-        xml.enabled = false
-    }
-    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
-}
+
 test {
     // enable TestNG support (default is JUnit)
     useJUnit()
